@@ -15,13 +15,6 @@ class Song {
 		return name + " " + artist + " " + album + " " + year;
 	}
 	
-//	Song(String name, String artist, String album, int year) {
-//		this.name = name;
-//		this.artist = artist;
-//		this.album = album;
-//		this.year = year;
-//	}
-	
 }
 
 //array list of song objects that will dynamically make sure it is sorted alphabetically 
