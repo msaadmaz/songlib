@@ -1,10 +1,10 @@
 package structures;
 
 public class Song implements Comparable<Song>{
-	String name;
-	String artist;
-	String album;
-	int year;
+	public String name;
+	public String artist;
+	public String album;
+	public int year;
 
 	public String toString() {
 		return name;

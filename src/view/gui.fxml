@@ -27,11 +27,10 @@
 		AnchorPane.topAnchor="25.0" 
 		AnchorPane.rightAnchor="50.0"
 		/>
-	<ListView fx:id="listView" 
+	<Text fx:id="display" 
 		AnchorPane.topAnchor = "50"
 		AnchorPane.rightAnchor = "10" 
-		AnchorPane.leftAnchor = "500"
-		AnchorPane.bottomAnchor = "400"/>
+		/>
 	<Button	
 		AnchorPane.bottomAnchor = "250"
 		AnchorPane.leftAnchor = "10"
