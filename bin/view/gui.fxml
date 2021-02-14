@@ -17,7 +17,7 @@
 		AnchorPane.topAnchor="25.0" 
 		AnchorPane.leftAnchor="50.0"
 		/>
-	<ListView fx:id="listView" 
+	<ListView fx:id="songDisplay" 
 		AnchorPane.topAnchor = "50"
 		AnchorPane.leftAnchor = "10" 
 		AnchorPane.rightAnchor = "500"
@@ -38,7 +38,23 @@
 		text = "Insert Song"
 		/>
 	<TextField 
+		fx:id="Name"
 		AnchorPane.bottomAnchor = "200"
+		AnchorPane.leftAnchor = "10"
+		/>
+	<TextField 
+		fx:id="Artist"
+		AnchorPane.bottomAnchor = "150"
+		AnchorPane.leftAnchor = "10"
+		/>
+	<TextField 
+		fx:id="Album"
+		AnchorPane.bottomAnchor = "100"
+		AnchorPane.leftAnchor = "10"
+		/>
+	<TextField 
+		fx:id="Year"
+		AnchorPane.bottomAnchor = "50"
 		AnchorPane.leftAnchor = "10"
 		/>
 	<TextField 
