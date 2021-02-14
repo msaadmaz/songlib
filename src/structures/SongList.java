@@ -4,18 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-//song object that will store each song
-class Song {
-	String name;
-	String artist;
-	String album;
-	int year;
-	
-	public String toString() {
-		return name + " " + artist + " " + album + " " + year;
-	}
-	
-}
 
 //array list of song objects that will dynamically make sure it is sorted alphabetically 
 public class SongList {
@@ -55,6 +43,10 @@ public class SongList {
 	//gets the size of the list
 	public int getSize() {
 		return list.size();
+	}
+	
+	public void remove(String song, String artist) {
+		
 	}
 	
 
