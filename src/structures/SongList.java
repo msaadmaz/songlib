@@ -45,8 +45,18 @@ public class SongList {
 		return list.size();
 	}
 	
-	public void remove(String song, String artist) {
-		
+	public void remove(int index) {
+		this.list.remove(index);
+	}
+	
+	public void add(String name, String artist, String album, int year) {
+		Song newSong = new Song();
+		newSong.name = name;
+		newSong.artist = artist;
+		newSong.album = album;
+		newSong.year = year;
+		this.list.add(newSong);
+		this.list.sort(null);
 	}
 	
 
