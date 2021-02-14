@@ -7,8 +7,8 @@ import java.util.StringTokenizer;
 
 //array list of song objects that will dynamically make sure it is sorted alphabetically 
 public class SongList {
-	ArrayList<Song> list = new ArrayList<Song>();
-	
+	public ArrayList<Song> list = new ArrayList<Song>();
+	public ArrayList<String> names = new ArrayList<String>();
 	//constructed through a file
 	public SongList(Scanner sc) {
 		
@@ -33,6 +33,9 @@ public class SongList {
 		
 		//need to make comparator
 		this.list.sort(null);
+		for(int i = 0; i < this.list.size(); i++) {
+			this.names.add(this.list.get(i).toString());
+		}
 	}
 	
 	//prints list
@@ -44,7 +47,8 @@ public class SongList {
 	public int getSize() {
 		return list.size();
 	}
-	
+
+
 	public void remove(int index) {
 		this.list.remove(index);
 	}
@@ -57,13 +61,14 @@ public class SongList {
 		newSong.year = year;
 		this.list.add(newSong);
 		this.list.sort(null);
+
 	}
 	
 	public void update(int index, String name, String artist, String album, Integer year) {
-		if( !name.equals("")) {
+		if( !name.equals("") ) {
 			this.list.get(index).name = name;
 			this.list.sort(null);
-			this.list.names.get(index) = name;
+			this.names.add(index, name);
 			this.names.sort(null);
 		}
 		if( !artist.equals("") ) {
