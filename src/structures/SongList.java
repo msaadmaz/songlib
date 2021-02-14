@@ -17,7 +17,7 @@ public class SongList {
 			String song = sc.nextLine();
 			
 			//tokens (the components of the song object) are delimmited by a comma
-			StringTokenizer components = new StringTokenizer(song,",");
+			StringTokenizer components = new StringTokenizer(song,"|");
 			
 			//construct a song
 			Song temp = new Song();
