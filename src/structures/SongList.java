@@ -51,6 +51,7 @@ public class SongList {
 
 	public void remove(int index) {
 		this.list.remove(index);
+		this.names.remove(index);
 	}
 	
 	public void add(String name, String artist, String album, int year) {
@@ -61,6 +62,8 @@ public class SongList {
 		newSong.year = year;
 		this.list.add(newSong);
 		this.list.sort(null);
+		this.names.add(name);
+		this.names.sort(null);
 
 	}
 	
