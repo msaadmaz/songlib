@@ -16,7 +16,6 @@ public class Song implements Comparable<Song>{
 		if( this.name.toLowerCase().compareTo( o.name.toLowerCase() ) == 0 ) {
 
 			return this.artist.toLowerCase().compareTo( o.artist.toLowerCase() );
-//			return o.name.toLowerCase().compareTo( this.name.toLowerCase() );
 		}
 		return this.name.toLowerCase().compareTo( o.name.toLowerCase() );
 	}
