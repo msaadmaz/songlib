@@ -67,4 +67,23 @@ public class SongList {
 
 	}
 	
+	public void update(int index, String name, String artist, String album, Integer year) {
+		if( !name.equals("") ) {
+			this.list.get(index).name = name;
+			this.list.sort(null);
+			this.names.add(index, name);
+			this.names.sort(null);
+		}
+		if( !artist.equals("") ) {
+			this.list.get(index).artist = artist;
+			this.list.sort(null);
+		}
+		if( !album.equals("") ) {
+			this.list.get(index).album = album;
+		}
+		if( year != null ) {
+			this.list.get(index).year = year;
+		}
+	}
+
 }
