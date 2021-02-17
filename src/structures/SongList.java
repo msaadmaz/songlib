@@ -64,7 +64,6 @@ public class SongList {
 		this.list.sort(null);
 		this.names.add(name);
 		this.names.sort(null);
-
 	}
 	
 	public void update(int index, String name, String artist, String album, Integer year) {

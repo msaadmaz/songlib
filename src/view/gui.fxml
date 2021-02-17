@@ -32,6 +32,7 @@
 		AnchorPane.rightAnchor = "10" 
 		/>
 	<Button	
+		fx:id="insert"
 		AnchorPane.bottomAnchor = "250"
 		AnchorPane.leftAnchor = "10"
 		text = "Insert Song"
@@ -57,16 +58,38 @@
 		AnchorPane.leftAnchor = "10"
 		/>
 	<TextField 
+		fx:id="updateName"
+		AnchorPane.bottomAnchor = "200"
+		AnchorPane.rightAnchor = "10"
+		/>
+	<TextField 
+		fx:id="updateArtist"
+		AnchorPane.bottomAnchor = "150"
+		AnchorPane.rightAnchor = "10"
+		/>
+	<TextField 
+		fx:id="updateAlbum"
+		AnchorPane.bottomAnchor = "100"
+		AnchorPane.rightAnchor = "10"
+		/>
+	<TextField 
+		fx:id="updateYear"
+		AnchorPane.bottomAnchor = "50"
+		AnchorPane.rightAnchor = "10"
+		/>
+	<TextField 
 		AnchorPane.bottomAnchor = "150"
 		AnchorPane.rightAnchor = "10"
 		/>
 	<Button	
-		AnchorPane.bottomAnchor = "200"
+		fx:id="update"
+		AnchorPane.bottomAnchor = "300"
 		AnchorPane.rightAnchor = "10"
 		text = "Update Selected Song"
 		/>
 	<Button	
-		AnchorPane.bottomAnchor = "250"
+		fx:id="delete"
+		AnchorPane.bottomAnchor = "350"
 		AnchorPane.rightAnchor = "10"
 		text = "Delete Selected Song"
 		/>

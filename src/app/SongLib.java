@@ -20,10 +20,12 @@ public class SongLib extends Application {
 		loader.setLocation(
 		getClass().getResource("/view/gui.fxml"));
 		AnchorPane root = (AnchorPane)loader.load();
+		
 		ListController ListController =
 				loader.getController();
 		ListController.start(primaryStage);
-		Scene scene = new Scene(root, 200, 300);
+		
+		Scene scene = new Scene(root, 1000, 1000);
 		primaryStage.setScene(scene);
 		primaryStage.show(); 
 		
