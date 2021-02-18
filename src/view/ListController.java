@@ -1,9 +1,8 @@
 package view;
 
 import java.io.File;
+
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Optional;
 import java.util.Scanner;
 
 import javafx.collections.FXCollections;
@@ -74,6 +73,7 @@ public class ListController {
 						setTextDisplay(mainStage));
 		}
 		catch (FileNotFoundException e) {
+			// need to add an alert here incase there isn't any file
 			System.out.print("file not found");
 			return;
 		}
@@ -89,29 +89,30 @@ public class ListController {
 	}
 	
 	public void insertion(ActionEvent e) {
+		// need to add alert if name or artist is null
+		// need to add alert if nothing is in insertion text fields ie. all of them are null
 		String songName = Name.getText();
 		String artistName = Artist.getText();
 		String albumName = Album.getText();
 		int year = Integer.parseInt(Year.getText());
-		list.add(songName, artistName, albumName, year);
-		obsList.add(songName);
+		obsList = list.add(songName, artistName, albumName, year, obsList);
 	}
 	
 	public void deletion(ActionEvent e) {
+		//need to add alert if deleting from obslist that has no more songs in it
 		int index = songDisplay.getSelectionModel().getSelectedIndex();
 		obsList.remove(index);
 		list.remove(index);
 	}
 	
 	public void update(ActionEvent e) {
+		// need to add alert if update is clicked w/o any entries into the field
 		int index = songDisplay.getSelectionModel().getSelectedIndex();
-		obsList.remove(index);
 		String songName = updateName.getText();
 		String artistName = updateArtist.getText();
 		String albumName = updateAlbum.getText();
-		int year = Integer.parseInt(updateYear.getText());
-		list.update(index, songName, artistName, albumName, year);
-		obsList.add(songName); //something's up with update function
+		Integer year = Integer.parseInt(updateYear.getText());
+		list.update(index, songName, artistName, albumName, year, obsList);
 	}
 	
 	

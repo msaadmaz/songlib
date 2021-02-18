@@ -1,8 +1,10 @@
 package structures;
 
 import java.util.ArrayList;
+
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import javafx.collections.ObservableList;
 
 
 //array list of song objects that will dynamically make sure it is sorted alphabetically 
@@ -54,7 +56,7 @@ public class SongList {
 		this.names.remove(index);
 	}
 	
-	public void add(String name, String artist, String album, int year) {
+	public ObservableList<String> add(String name, String artist, String album, int year, ObservableList<String> obsList) {
 		Song newSong = new Song();
 		newSong.name = name;
 		newSong.artist = artist;
@@ -62,26 +64,42 @@ public class SongList {
 		newSong.year = year;
 		this.list.add(newSong);
 		this.list.sort(null);
-		this.names.add(name);
-		this.names.sort(null);
+		obsList.add(newSong.toString());
+		ArrayList<String> temp = new ArrayList<String>();
+		for(int i = 0; i < this.list.size(); i++) {
+			temp.add(this.list.get(i).toString());
+			obsList.set(i, this.list.get(i).toString());
+		}
+		this.names = temp;
+		return obsList;
 	}
 	
-	public void update(int index, String name, String artist, String album, Integer year) {
+	public void update(int index, String name, String artist, String album, Integer year, ObservableList<String> obsList) {
+		int counter = 0;
 		if( !name.equals("") ) {
 			this.list.get(index).name = name;
 			this.list.sort(null);
-			this.names.add(index, name);
-			this.names.sort(null);
+			counter++;
 		}
 		if( !artist.equals("") ) {
 			this.list.get(index).artist = artist;
+			System.out.println(this.list.get(index).artist);
 			this.list.sort(null);
+			counter++;
 		}
 		if( !album.equals("") ) {
 			this.list.get(index).album = album;
 		}
 		if( year != null ) {
-			this.list.get(index).year = year;
+			this.list.get(index).year = Integer.parseInt(year.toString());
+		}
+		if(counter >= 1) {
+			ArrayList<String> temp = new ArrayList<String>();
+			for(int i = 0; i < this.list.size(); i++) {
+				temp.add(this.list.get(i).toString());
+				obsList.set(i, this.list.get(i).toString());
+			}
+			this.names = temp;
 		}
 	}
 
