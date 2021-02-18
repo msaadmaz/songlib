@@ -49,8 +49,9 @@ public class ListController {
 	TextField updateAlbum;
 	@FXML         
 	TextField updateYear; 
-	private ObservableList<String> obsList;              
-	public static SongList list;
+	private ObservableList<String> obsList;  
+	
+	public SongList list;
 	
 	public void start(Stage mainStage) {                
 		// create an ObservableList 
