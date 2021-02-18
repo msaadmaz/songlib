@@ -78,10 +78,6 @@
 		AnchorPane.bottomAnchor = "50"
 		AnchorPane.rightAnchor = "10"
 		/>
-	<TextField 
-		AnchorPane.bottomAnchor = "150"
-		AnchorPane.rightAnchor = "10"
-		/>
 	<Button	
 		fx:id="update"
 		AnchorPane.bottomAnchor = "300"
