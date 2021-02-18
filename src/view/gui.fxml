@@ -36,6 +36,7 @@
 		AnchorPane.bottomAnchor = "250"
 		AnchorPane.leftAnchor = "10"
 		text = "Insert Song"
+		onAction="#insertion"
 		/>
 	<TextField 
 		fx:id="Name"
@@ -86,12 +87,14 @@
 		AnchorPane.bottomAnchor = "300"
 		AnchorPane.rightAnchor = "10"
 		text = "Update Selected Song"
+		onAction="#update"
 		/>
 	<Button	
 		fx:id="delete"
 		AnchorPane.bottomAnchor = "350"
 		AnchorPane.rightAnchor = "10"
 		text = "Delete Selected Song"
+		onAction="#deletion"
 		/>
 	
    	
