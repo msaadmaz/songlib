@@ -1,16 +1,12 @@
 package app;
 
 import javafx.application.Application;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import structures.SongList;
 import view.ListController;
-
-import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 
 public class SongLib extends Application {
