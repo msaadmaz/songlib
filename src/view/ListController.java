@@ -108,7 +108,6 @@ public class ListController {
 	public void update(ActionEvent e) {
 		// need to add alert if update is clicked w/o any entries into the field
 		int index = songDisplay.getSelectionModel().getSelectedIndex();
-		obsList.remove(index);
 		String songName = updateName.getText();
 		String artistName = updateArtist.getText();
 		String albumName = updateAlbum.getText();

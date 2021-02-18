@@ -95,8 +95,6 @@ public class SongList {
 		}
 		if(counter >= 1) {
 			ArrayList<String> temp = new ArrayList<String>();
-			System.out.println(this.list.size());
-			System.out.println(obsList.size());
 			for(int i = 0; i < this.list.size(); i++) {
 				temp.add(this.list.get(i).toString());
 				obsList.set(i, this.list.get(i).toString());
