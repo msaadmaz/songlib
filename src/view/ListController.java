@@ -168,7 +168,6 @@ public class ListController {
 				
 				try {
 					int year = Integer.parseInt(Year.getText());
-<<<<<<< HEAD
 					if(year < 0) {
 						Alert errorNegativeYear = new Alert(AlertType.ERROR);
 						errorNegativeYear.setTitle("Insertion Error");
@@ -178,25 +177,13 @@ public class ListController {
 						String songName = Name.getText().trim();
 						String artistName = Artist.getText().trim();
 						String albumName = Album.getText().trim();
-						obsList = list.add(songName, artistName, albumName, year, obsList);
+						list.add(songName, artistName, albumName, year, obsList);
 						songDisplay.getSelectionModel().select(obsList.indexOf(songName));
 						display.setText("Name: " + songName + " \n " +
 								"Artist: " + artistName + " \n  " +
 								"Album: " + albumName + " \n " +
 								"Year: " + year);
 					}
-=======
-					String songName = Name.getText().trim();
-					String artistName = Artist.getText().trim();
-					String albumName = Album.getText().trim();
-					list.add(songName, artistName, albumName, year, obsList);
-					songDisplay.getSelectionModel().select(obsList.indexOf(songName));
-					display.setText("Name: " + songName + " \n " +
-							"Artist: " + artistName + " \n  " +
-							"Album: " + albumName + " \n " +
-							"Year: " + year);
-					
->>>>>>> main-saad
 				} catch( NumberFormatException n ) {
 					if( Year.getText().trim().isEmpty() ) {
 						int year = 0;
