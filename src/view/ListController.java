@@ -199,10 +199,6 @@ public class ListController {
 	}
 	
 	public void update(ActionEvent e) {
-<<<<<<< HEAD
-		
-=======
->>>>>>> main-saad
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Update");
 		alert.setContentText("Are you sure you want to update?");
