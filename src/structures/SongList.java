@@ -61,7 +61,13 @@ public class SongList {
 	}
 	
 	// adds a new song to the song list and returns the new observable list so that it can properly be aligned with songlist
-	public ObservableList<String> add(String name, String artist, String album, int year, ObservableList<String> obsList) {
+	public void add(String name, String artist, String album, int year, ObservableList<String> obsList) {
+		
+		if( this.list.isEmpty() ) {
+			this.list.clear();
+			obsList.clear();
+		}
+		
 		Song newSong = new Song();
 		newSong.name = name;
 		newSong.artist = artist;
@@ -90,9 +96,6 @@ public class SongList {
 		
 		//updates name array list
 		this.names = temp;
-		
-		// returns updated OBS list
-		return obsList;
 	}
 	
 	// updates a songs in songlist and updates the observable list as well

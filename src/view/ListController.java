@@ -4,6 +4,8 @@ import java.io.File;
 
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -16,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.text.Text;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -68,9 +69,10 @@ public class ListController {
 			sc.close();
 			obsList = FXCollections.observableArrayList(list.names);
 			songDisplay.setItems(obsList); 
-			
-			// select the first item
-			songDisplay.getSelectionModel().select(0);
+			if( !obsList.isEmpty() ) {
+				// select the first item
+				songDisplay.getSelectionModel().select(0);
+			}
 			setTextDisplay(mainStage);
 			
 			// set listener for the items
@@ -78,23 +80,58 @@ public class ListController {
 				.getSelectionModel()
 				.selectedIndexProperty()
 				.addListener(
-						(obs, oldVal, newVal) -> 
-						setTextDisplay(mainStage));
+						(obs, oldVal, newVal) -> {
+								setTextDisplay(mainStage);
+						});
 			
 		} catch (FileNotFoundException e) {
-			// need to add an alert here incase there isn't any file
-			System.out.print("file not found");
-			return;
+			// if songs file doesn't exist it will create one
+			File songs = new File("songs.txt");
+			try {
+				songs.createNewFile();
+				FileWriter myWriter = new FileWriter("songs.txt");
+				myWriter.write("no song|no artist|no album|0");
+				myWriter.close();
+				try(Scanner sc = new Scanner(new File("songs.txt")) ){
+					list = new SongList(sc);
+					songs.delete();
+				} catch (FileNotFoundException e2) {
+					System.out.println("I'm broken");
+				}
+				obsList = FXCollections.observableArrayList(list.names);
+				songDisplay.setItems(obsList); 
+				
+				// select the first item
+				songDisplay.getSelectionModel().select(0);
+				setTextDisplay(mainStage);
+				
+				// set listener for the items
+				songDisplay
+					.getSelectionModel()
+					.selectedIndexProperty()
+					.addListener(
+							(obs, oldVal, newVal) -> {
+									setTextDisplay(mainStage);
+							});
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 	}
 	private void setTextDisplay(Stage mainStage) {
 		int index = songDisplay.getSelectionModel().getSelectedIndex();
-		Song selectedSong = list.list.get(index);
-		display.setText("Name: " + selectedSong.name + " \n " +
-						"Artist: " + selectedSong.artist + " \n  " +
-						"Album: " + selectedSong.album + " \n " +
-						"Year: " + selectedSong.year);
+		if( index == -1 && !obsList.isEmpty() ) {
+			index = 0;
+		}
+		if( !list.list.isEmpty() && !obsList.isEmpty() ) {
+			Song selectedSong = list.list.get(index);
+			display.setText("Name: " + selectedSong.name + " \n " +
+							"Artist: " + selectedSong.artist + " \n  " +
+							"Album: " + selectedSong.album + " \n " +
+							"Year: " + selectedSong.year);
+		}
 	}
 	
 	public void insertion(ActionEvent e) {
@@ -131,6 +168,7 @@ public class ListController {
 				
 				try {
 					int year = Integer.parseInt(Year.getText());
+<<<<<<< HEAD
 					if(year < 0) {
 						Alert errorNegativeYear = new Alert(AlertType.ERROR);
 						errorNegativeYear.setTitle("Insertion Error");
@@ -147,6 +185,18 @@ public class ListController {
 								"Album: " + albumName + " \n " +
 								"Year: " + year);
 					}
+=======
+					String songName = Name.getText().trim();
+					String artistName = Artist.getText().trim();
+					String albumName = Album.getText().trim();
+					list.add(songName, artistName, albumName, year, obsList);
+					songDisplay.getSelectionModel().select(obsList.indexOf(songName));
+					display.setText("Name: " + songName + " \n " +
+							"Artist: " + artistName + " \n  " +
+							"Album: " + albumName + " \n " +
+							"Year: " + year);
+					
+>>>>>>> main-saad
 				} catch( NumberFormatException n ) {
 					if( Year.getText().trim().isEmpty() ) {
 						int year = 0;
@@ -158,7 +208,7 @@ public class ListController {
 						}else {
 							albumName = Album.getText().trim();
 						}
-						obsList = list.add(songName, artistName, albumName, year, obsList);
+						list.add(songName, artistName, albumName, year, obsList);
 						songDisplay.getSelectionModel().select(obsList.indexOf(songName));
 						display.setText("Name: " + songName + " \n " +
 								"Artist: " + artistName + " \n  " +
@@ -188,15 +238,16 @@ public class ListController {
 				errorEmpty.setTitle("Deletion Error");
 				errorEmpty.setContentText("There is nothing to delete.");
 				errorEmpty.show();
-			}
-			int index = songDisplay.getSelectionModel().getSelectedIndex();
-			obsList.remove(index);
-			list.remove(index);
-			if(obsList.isEmpty()) {
-				display.setText("Name: "  + " \n " +
-						"Artist: "  + " \n  " +
-						"Album: "  + " \n " +
-						"Year: ");
+			} else {
+				int index = songDisplay.getSelectionModel().getSelectedIndex();
+				obsList.remove(index);
+				list.remove(index);
+				if(obsList.isEmpty()) {
+					display.setText("Name: "  + " \n " +
+							"Artist: "  + " \n  " +
+							"Album: "  + " \n " +
+							"Year: ");
+				}
 			}
 		}
 	}
