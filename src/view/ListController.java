@@ -98,9 +98,6 @@ public class ListController {
 	}
 	
 	public void insertion(ActionEvent e) {
-		// need to add alert if name or artist is null
-		// need to add alert if nothing is in insertion text fields ie. all of them are null
-		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Insert");
 		alert.setContentText("Are you sure you want to insert?");
@@ -134,9 +131,9 @@ public class ListController {
 				
 				try {
 					int year = Integer.parseInt(Year.getText());
-					String songName = Name.getText();
-					String artistName = Artist.getText();
-					String albumName = Album.getText();
+					String songName = Name.getText().trim();
+					String artistName = Artist.getText().trim();
+					String albumName = Album.getText().trim();
 					obsList = list.add(songName, artistName, albumName, year, obsList);
 					songDisplay.getSelectionModel().select(obsList.indexOf(songName));
 					display.setText("Name: " + songName + " \n " +
@@ -147,13 +144,13 @@ public class ListController {
 				} catch( NumberFormatException n ) {
 					if( Year.getText().trim().isEmpty() ) {
 						int year = 0;
-						String songName = Name.getText();
-						String artistName = Artist.getText();
+						String songName = Name.getText().trim();
+						String artistName = Artist.getText().trim();
 						String albumName;
 						if(Album.getText().trim().isEmpty()) {
 							albumName = "No Album";
 						}else {
-							albumName = Album.getText();
+							albumName = Album.getText().trim();
 						}
 						obsList = list.add(songName, artistName, albumName, year, obsList);
 						songDisplay.getSelectionModel().select(obsList.indexOf(songName));
@@ -221,26 +218,26 @@ public class ListController {
 				noUpdateArtist.setTitle("Update Error");
 				noUpdateArtist.setContentText("Please insert an Artist that you wish to change the currently selected song to.");
 				noUpdateArtist.showAndWait();
-			}else if(list.search(updateName.getText(), updateArtist.getText())){
+			}else if(list.search(updateName.getText().trim(), updateArtist.getText().trim())){
 				Alert errorDuplicate = new Alert(AlertType.ERROR);
 				errorDuplicate.setTitle("Update Error");
 				errorDuplicate.setContentText("Song and artist already exist. Please update the song using other names");
 				errorDuplicate.showAndWait();
 			} else{
 				try {
-					int year = Integer.parseInt(updateYear.getText());
+					int year = Integer.parseInt(updateYear.getText().trim());
 					int index = songDisplay.getSelectionModel().getSelectedIndex();
-					String songName = updateName.getText();
-					String artistName = updateArtist.getText();
-					String albumName = updateAlbum.getText();
+					String songName = updateName.getText().trim();
+					String artistName = updateArtist.getText().trim();
+					String albumName = updateAlbum.getText().trim();
 					list.update(index, songName, artistName, albumName, year, obsList);
 				} catch( NumberFormatException n ) {
 					if( updateYear.getText().trim().isEmpty() ) {
 						int index = songDisplay.getSelectionModel().getSelectedIndex();
 						int year = list.list.get(index).year;
-						String songName = updateName.getText();
-						String artistName = updateArtist.getText();
-						String albumName = updateAlbum.getText();
+						String songName = updateName.getText().trim();
+						String artistName = updateArtist.getText().trim();
+						String albumName = updateAlbum.getText().trim();
 						list.update(index, songName, artistName, albumName, year, obsList);
 					} else {
 						Alert errorUpdateYear = new Alert(AlertType.ERROR);
