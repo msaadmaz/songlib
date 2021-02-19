@@ -90,8 +90,6 @@ public class ListController {
 			try {
 				songs.createNewFile();
 				FileWriter myWriter = new FileWriter("songs.txt");
-				myWriter.write("no song|no artist|no album|0");
-				myWriter.close();
 				try(Scanner sc = new Scanner(new File("songs.txt")) ){
 					list = new SongList(sc);
 					songs.delete();
@@ -238,6 +236,12 @@ public class ListController {
 							"Artist: "  + " \n  " +
 							"Album: "  + " \n " +
 							"Year: ");
+				}
+				if(index > obsList.size()-1) {
+					index--;
+					songDisplay.getSelectionModel().select(index);
+				}else {
+					songDisplay.getSelectionModel().select(index);
 				}
 			}
 		}
