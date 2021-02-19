@@ -1,17 +1,1 @@
-<<<<<<< HEAD
 MODUS|Joji|No Album|0
-=======
-777|Joji|Nectar|2020
-Afterthought|Joji|Nectar|2020
-Balenciaga Challenge|6LACK|East Atlanta Love Letter|2018
-Loaded Gun|6LACK|East Atlanta Love Letter|2018
-MIDDLE CHILD|Jerimiah Cole|Single|2019
-MIDDLE CHILD|Jerimiah Mustafa|Single|2019
-MIDDLE CHILD|PnB Rock|TrapStar Turnt Popstar|2019
-MODUS|Joji|Nectar|2020
-Mr. Hollywood|Joji|Nectar|2020
-Only|NF|The Search|2019
-Returns|NF|The Search|2019
-Switch|6LACK|East Atlanta Love Letter|2018
-The Search|NF|The Search|2019
->>>>>>> main-saad

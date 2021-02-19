@@ -131,16 +131,22 @@ public class ListController {
 				
 				try {
 					int year = Integer.parseInt(Year.getText());
-					String songName = Name.getText().trim();
-					String artistName = Artist.getText().trim();
-					String albumName = Album.getText().trim();
-					obsList = list.add(songName, artistName, albumName, year, obsList);
-					songDisplay.getSelectionModel().select(obsList.indexOf(songName));
-					display.setText("Name: " + songName + " \n " +
-							"Artist: " + artistName + " \n  " +
-							"Album: " + albumName + " \n " +
-							"Year: " + year);
-					
+					if(year < 0) {
+						Alert errorNegativeYear = new Alert(AlertType.ERROR);
+						errorNegativeYear.setTitle("Insertion Error");
+						errorNegativeYear.setContentText("Please insert a valid year that you wish to change the currently selected song to.");
+						errorNegativeYear.showAndWait();
+					} else {
+						String songName = Name.getText().trim();
+						String artistName = Artist.getText().trim();
+						String albumName = Album.getText().trim();
+						obsList = list.add(songName, artistName, albumName, year, obsList);
+						songDisplay.getSelectionModel().select(obsList.indexOf(songName));
+						display.setText("Name: " + songName + " \n " +
+								"Artist: " + artistName + " \n  " +
+								"Album: " + albumName + " \n " +
+								"Year: " + year);
+					}
 				} catch( NumberFormatException n ) {
 					if( Year.getText().trim().isEmpty() ) {
 						int year = 0;
@@ -201,24 +207,7 @@ public class ListController {
 		alert.setContentText("Are you sure you want to update?");
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.isPresent() && result.get() == ButtonType.OK) {
-			if(updateName.getText().trim().isEmpty() && updateArtist.getText().trim().isEmpty()) {
-				Alert noUpdate = new Alert(AlertType.ERROR);
-				noUpdate.setTitle("Update Error");
-				noUpdate.setContentText("Please insert a Name and Artist that you wish to change the currently selected song to.");
-				noUpdate.showAndWait();
-			}
-			else if(updateName.getText().trim().isEmpty()){
-				Alert noUpdateName = new Alert(AlertType.ERROR);
-				noUpdateName.setTitle("Update Error");
-				noUpdateName.setContentText("Please insert a Name that you wish to change the currently selected song to.");
-				noUpdateName.showAndWait();
-			}
-			else if(updateArtist.getText().trim().isEmpty()) {
-				Alert noUpdateArtist = new Alert(AlertType.ERROR);
-				noUpdateArtist.setTitle("Update Error");
-				noUpdateArtist.setContentText("Please insert an Artist that you wish to change the currently selected song to.");
-				noUpdateArtist.showAndWait();
-			}else if(list.search(updateName.getText().trim(), updateArtist.getText().trim())){
+			if(list.search(updateName.getText().trim(), updateArtist.getText().trim())){
 				Alert errorDuplicate = new Alert(AlertType.ERROR);
 				errorDuplicate.setTitle("Update Error");
 				errorDuplicate.setContentText("Song and artist already exist. Please update the song using other names");
@@ -226,11 +215,23 @@ public class ListController {
 			} else{
 				try {
 					int year = Integer.parseInt(updateYear.getText().trim());
-					int index = songDisplay.getSelectionModel().getSelectedIndex();
-					String songName = updateName.getText().trim();
-					String artistName = updateArtist.getText().trim();
-					String albumName = updateAlbum.getText().trim();
-					list.update(index, songName, artistName, albumName, year, obsList);
+					if(year < 0) {
+						Alert errorNegativeYear = new Alert(AlertType.ERROR);
+						errorNegativeYear.setTitle("Update Error");
+						errorNegativeYear.setContentText("Please insert a valid year that you wish to change the currently selected song to.");
+						errorNegativeYear.showAndWait();
+					}else {
+						int index = songDisplay.getSelectionModel().getSelectedIndex();
+						String songName = updateName.getText().trim();
+						String artistName = updateArtist.getText().trim();
+						String albumName = updateAlbum.getText().trim();
+						list.update(index, songName, artistName, albumName, year, obsList);
+						songDisplay.getSelectionModel().select(obsList.indexOf(songName));
+						display.setText("Name: " + songName + " \n " +
+								"Artist: " + artistName + " \n  " +
+								"Album: " + albumName + " \n " +
+								"Year: " + year);
+					}
 				} catch( NumberFormatException n ) {
 					if( updateYear.getText().trim().isEmpty() ) {
 						int index = songDisplay.getSelectionModel().getSelectedIndex();
@@ -239,6 +240,11 @@ public class ListController {
 						String artistName = updateArtist.getText().trim();
 						String albumName = updateAlbum.getText().trim();
 						list.update(index, songName, artistName, albumName, year, obsList);
+						songDisplay.getSelectionModel().select(obsList.indexOf(songName));
+						display.setText("Name: " + songName + " \n " +
+								"Artist: " + artistName + " \n  " +
+								"Album: " + albumName + " \n " +
+								"Year: " + year);
 					} else {
 						Alert errorUpdateYear = new Alert(AlertType.ERROR);
 						errorUpdateYear.setTitle("Update Error");
