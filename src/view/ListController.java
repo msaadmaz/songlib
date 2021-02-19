@@ -146,7 +146,12 @@ public class ListController {
 						int year = 0;
 						String songName = Name.getText();
 						String artistName = Artist.getText();
-						String albumName = Album.getText();
+						String albumName;
+						if(Album.getText().trim().isEmpty()) {
+							albumName = "No Album";
+						}else {
+							albumName = Album.getText();
+						}
 						obsList = list.add(songName, artistName, albumName, year, obsList);
 						songDisplay.getSelectionModel().select(obsList.indexOf(songName));
 						display.setText("Name: " + songName + " \n " +
@@ -172,6 +177,12 @@ public class ListController {
 		alert.setContentText("Are you sure you want to delete?");
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.isPresent() && result.get() == ButtonType.OK) {
+			if(obsList.isEmpty()) {
+				Alert errorEmpty = new Alert(AlertType.ERROR);
+				errorEmpty.setTitle("Deletion Error");
+				errorEmpty.setContentText("There is nothing to delete.");
+				errorEmpty.show();
+			}
 			int index = songDisplay.getSelectionModel().getSelectedIndex();
 			obsList.remove(index);
 			list.remove(index);
