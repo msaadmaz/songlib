@@ -51,16 +51,22 @@ public class SongList {
 	}
 
 
+	// removes an item from the list
 	public void remove(int index) {
 		this.list.remove(index);
 		this.names.remove(index);
 	}
 	
+	// adds a new song to the song list and returns the new observable list so that it can properly be aligned with songlist
 	public ObservableList<String> add(String name, String artist, String album, int year, ObservableList<String> obsList) {
 		Song newSong = new Song();
 		newSong.name = name;
 		newSong.artist = artist;
-		newSong.album = album;
+		if( album.equals("") ) {
+			newSong.album = "No Album";
+		} else {
+			newSong.album = album;
+		}
 		newSong.year = year;
 		this.list.add(newSong);
 		this.list.sort(null);
@@ -74,6 +80,7 @@ public class SongList {
 		return obsList;
 	}
 	
+	// updates a songs in songlist and updates the observable list as well
 	public void update(int index, String name, String artist, String album, Integer year, ObservableList<String> obsList) {
 		int counter = 0;
 		if( !name.equals("") ) {

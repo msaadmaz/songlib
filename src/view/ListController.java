@@ -2,6 +2,7 @@ package view;
 
 import java.io.File;
 
+
 import java.io.FileNotFoundException;
 import java.util.Optional;
 import java.util.Scanner;
@@ -58,7 +59,10 @@ public class ListController {
 		// create an ObservableList 
 		// from an ArrayList  
 		try( Scanner sc = new Scanner(new File("songs.txt"))){
+			File songFile = new File("songs.txt");
 			list = new SongList(sc);
+			songFile.delete();
+			sc.close();
 			obsList = FXCollections.observableArrayList(list.names);
 			songDisplay.setItems(obsList); 
 			
@@ -73,8 +77,8 @@ public class ListController {
 				.addListener(
 						(obs, oldVal, newVal) -> 
 						setTextDisplay(mainStage));
-		}
-		catch (FileNotFoundException e) {
+			
+		} catch (FileNotFoundException e) {
 			// need to add an alert here incase there isn't any file
 			System.out.print("file not found");
 			return;
@@ -196,6 +200,10 @@ public class ListController {
 			list.update(index, songName, artistName, albumName, year, obsList);
 		}
 		
+	}
+	
+	public SongList getSongList() {
+		return list;
 	}
 	
 	
