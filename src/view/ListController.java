@@ -100,13 +100,23 @@ public class ListController {
 	
 	public void deletion(ActionEvent e) {
 		//need to add alert if deleting from obslist that has no more songs in it
+		
 		int index = songDisplay.getSelectionModel().getSelectedIndex();
 		obsList.remove(index);
 		list.remove(index);
+		if(obsList.isEmpty()) {
+			display.setText("Name: "  + " \n " +
+					"Artist: "  + " \n  " +
+					"Album: "  + " \n " +
+					"Year: ");
+		}
 	}
 	
 	public void update(ActionEvent e) {
 		// need to add alert if update is clicked w/o any entries into the field
+		if(updateName.getText() == null) {
+			System.out.println("name is null");
+		}
 		int index = songDisplay.getSelectionModel().getSelectedIndex();
 		String songName = updateName.getText();
 		String artistName = updateArtist.getText();
