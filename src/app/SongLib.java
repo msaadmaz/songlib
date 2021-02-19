@@ -28,6 +28,7 @@ public class SongLib extends Application {
 		
 		Scene scene = new Scene(root, 750, 750);
 		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 		primaryStage.show(); 
 		primaryStage.setOnCloseRequest(event -> {
 			SongList list = ListController.getSongList();

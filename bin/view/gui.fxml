@@ -42,41 +42,49 @@
 		fx:id="Name"
 		AnchorPane.bottomAnchor = "200"
 		AnchorPane.leftAnchor = "10"
+		promptText = "Insert Name"
 		/>
 	<TextField 
 		fx:id="Artist"
 		AnchorPane.bottomAnchor = "150"
 		AnchorPane.leftAnchor = "10"
+		promptText = "Insert Artist"
 		/>
 	<TextField 
 		fx:id="Album"
 		AnchorPane.bottomAnchor = "100"
 		AnchorPane.leftAnchor = "10"
+		promptText = "Insert Album"
 		/>
 	<TextField 
 		fx:id="Year"
 		AnchorPane.bottomAnchor = "50"
 		AnchorPane.leftAnchor = "10"
+		promptText = "Insert Year(Number Only)"
 		/>
 	<TextField 
 		fx:id="updateName"
 		AnchorPane.bottomAnchor = "200"
 		AnchorPane.rightAnchor = "10"
+		promptText = "Updated Name"
 		/>
 	<TextField 
 		fx:id="updateArtist"
 		AnchorPane.bottomAnchor = "150"
 		AnchorPane.rightAnchor = "10"
+		promptText = "Updated Artist"
 		/>
 	<TextField 
 		fx:id="updateAlbum"
 		AnchorPane.bottomAnchor = "100"
 		AnchorPane.rightAnchor = "10"
+		promptText = "Updated Album"
 		/>
 	<TextField 
 		fx:id="updateYear"
 		AnchorPane.bottomAnchor = "50"
 		AnchorPane.rightAnchor = "10"
+		promptText = "Updated Year"
 		/>
 	<Button	
 		fx:id="update"

@@ -146,7 +146,7 @@ public class ListController {
 								"Year: " + year);
 					} else {
 						Alert yearError = new Alert(AlertType.ERROR);
-						yearError.setContentText("Please enter in a number");
+						yearError.setContentText("Please enter in a valid year");
 						yearError.showAndWait();
 					}
 				}
