@@ -105,18 +105,27 @@ public class ListController {
 		if (result.isPresent() && result.get() == ButtonType.OK) {
 			if(Name.getText().trim().isEmpty() && Artist.getText().trim().isEmpty()) {
 				Alert errorBoth = new Alert(AlertType.ERROR);
+				errorBoth.setTitle("Insertion Error");
 				errorBoth.setContentText("Please input a name and artist");
 				errorBoth.showAndWait();
 			}
 			else if(Name.getText().trim().isEmpty()) {
 				Alert errorName = new Alert(AlertType.ERROR);
+				errorName.setTitle("Insertion Error");
 				errorName.setContentText("Please input a name");
 				errorName.showAndWait();
 			}
 			else if(Artist.getText().trim().isEmpty()) {
 				Alert errorAlbum = new Alert(AlertType.ERROR);
+				errorAlbum.setTitle("Insertion Error");
 				errorAlbum.setContentText("Please input an album");
 				errorAlbum.showAndWait();
+			}
+			else if(list.search(Name.getText(), Artist.getText())){
+				Alert errorDuplicate = new Alert(AlertType.ERROR);
+				errorDuplicate.setTitle("Insertion Error");
+				errorDuplicate.setContentText("Song and artist already exist. Please insert the song using other names");
+				errorDuplicate.showAndWait();
 			}
 			else {
 				
@@ -159,7 +168,7 @@ public class ListController {
 	public void deletion(ActionEvent e) {
 		//need to add alert if deleting from obslist that has no more songs in it
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Deletion");
+		alert.setTitle("Deletion Confirmation");
 		alert.setContentText("Are you sure you want to delete?");
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -176,28 +185,60 @@ public class ListController {
 	}
 	
 	public void update(ActionEvent e) {
-		// need to add alert if update is clicked w/o any entries into the field
+		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Update");
 		alert.setContentText("Are you sure you want to update?");
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.isPresent() && result.get() == ButtonType.OK) {
-			int index = songDisplay.getSelectionModel().getSelectedIndex();
-			String songName = updateName.getText();
-			String artistName = updateArtist.getText();
-			String albumName = updateAlbum.getText();
-			Integer year = null;
-			try {
-				year = Integer.parseInt(updateYear.getText());
-			} catch( NumberFormatException n ) {
-				if( updateYear.getText().equals("") ) {
-					year = list.list.get(index).year;
-				} else {
-					// need to throw an alert here to say that it has to be numbers inserted not strings
-					System.out.println("Enter in a number");
-				}
+			if(updateName.getText().trim().isEmpty() && updateArtist.getText().trim().isEmpty()) {
+				Alert noUpdate = new Alert(AlertType.ERROR);
+				noUpdate.setTitle("Update Error");
+				noUpdate.setContentText("Please insert a Name and Artist that you wish to change the currently selected song to.");
+				noUpdate.showAndWait();
 			}
-			list.update(index, songName, artistName, albumName, year, obsList);
+			else if(updateName.getText().trim().isEmpty()){
+				Alert noUpdateName = new Alert(AlertType.ERROR);
+				noUpdateName.setTitle("Update Error");
+				noUpdateName.setContentText("Please insert a Name that you wish to change the currently selected song to.");
+				noUpdateName.showAndWait();
+			}
+			else if(updateArtist.getText().trim().isEmpty()) {
+				Alert noUpdateArtist = new Alert(AlertType.ERROR);
+				noUpdateArtist.setTitle("Update Error");
+				noUpdateArtist.setContentText("Please insert an Artist that you wish to change the currently selected song to.");
+				noUpdateArtist.showAndWait();
+			}else if(list.search(updateName.getText(), updateArtist.getText())){
+				Alert errorDuplicate = new Alert(AlertType.ERROR);
+				errorDuplicate.setTitle("Update Error");
+				errorDuplicate.setContentText("Song and artist already exist. Please update the song using other names");
+				errorDuplicate.showAndWait();
+			} else{
+				try {
+					int year = Integer.parseInt(updateYear.getText());
+					int index = songDisplay.getSelectionModel().getSelectedIndex();
+					String songName = updateName.getText();
+					String artistName = updateArtist.getText();
+					String albumName = updateAlbum.getText();
+					list.update(index, songName, artistName, albumName, year, obsList);
+				} catch( NumberFormatException n ) {
+					if( updateYear.getText().trim().isEmpty() ) {
+						int index = songDisplay.getSelectionModel().getSelectedIndex();
+						int year = list.list.get(index).year;
+						String songName = updateName.getText();
+						String artistName = updateArtist.getText();
+						String albumName = updateAlbum.getText();
+						list.update(index, songName, artistName, albumName, year, obsList);
+					} else {
+						Alert errorUpdateYear = new Alert(AlertType.ERROR);
+						errorUpdateYear.setTitle("Update Error");
+						errorUpdateYear.setContentText("Please insert a valid year that you wish to change the currently selected song to.");
+						errorUpdateYear.showAndWait();
+				}
+				
+			}
+			
+		}
 		}
 		
 	}

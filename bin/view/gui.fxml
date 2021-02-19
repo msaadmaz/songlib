@@ -43,24 +43,28 @@
 		AnchorPane.bottomAnchor = "200"
 		AnchorPane.leftAnchor = "10"
 		promptText = "Insert Name"
+		prefWidth = "200"
 		/>
 	<TextField 
 		fx:id="Artist"
 		AnchorPane.bottomAnchor = "150"
 		AnchorPane.leftAnchor = "10"
 		promptText = "Insert Artist"
+		prefWidth = "200"
 		/>
 	<TextField 
 		fx:id="Album"
 		AnchorPane.bottomAnchor = "100"
 		AnchorPane.leftAnchor = "10"
 		promptText = "Insert Album"
+		prefWidth = "200"
 		/>
 	<TextField 
 		fx:id="Year"
 		AnchorPane.bottomAnchor = "50"
 		AnchorPane.leftAnchor = "10"
-		promptText = "Insert Year(Number Only)"
+		promptText = "Insert Year (Number Only)"
+		prefWidth = "200"
 		/>
 	<TextField 
 		fx:id="updateName"
