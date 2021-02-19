@@ -154,7 +154,7 @@ public class ListController {
 				errorAlbum.setContentText("Please input an album");
 				errorAlbum.showAndWait();
 			}
-			else if(list.search(Name.getText(), Artist.getText())){
+			else if(list.search(Name.getText().trim(), Artist.getText().trim())){
 				Alert errorDuplicate = new Alert(AlertType.ERROR);
 				errorDuplicate.setTitle("Insertion Error");
 				errorDuplicate.setContentText("Song and artist already exist. Please insert the song using other names");
