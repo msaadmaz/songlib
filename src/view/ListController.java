@@ -4,7 +4,6 @@ import java.io.File;
 
 
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.Scanner;
@@ -89,7 +88,6 @@ public class ListController {
 			File songs = new File("songs.txt");
 			try {
 				songs.createNewFile();
-				FileWriter myWriter = new FileWriter("songs.txt");
 				try(Scanner sc = new Scanner(new File("songs.txt")) ){
 					list = new SongList(sc);
 					songs.delete();
