@@ -59,8 +59,11 @@ public class ListController {
 		// create an ObservableList 
 		// from an ArrayList  
 		try( Scanner sc = new Scanner(new File("songs.txt"))){
+			
+			// makes File object so we can delete it after the SongList data structure is created
 			File songFile = new File("songs.txt");
 			list = new SongList(sc);
+			// deletes the songs.txt 
 			songFile.delete();
 			sc.close();
 			obsList = FXCollections.observableArrayList(list.names);
@@ -171,7 +174,7 @@ public class ListController {
 	}
 	
 	public void deletion(ActionEvent e) {
-		//need to add alert if deleting from obslist that has no more songs in it
+		// confirms with user if they want to delete the song
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Deletion Confirmation");
 		alert.setContentText("Are you sure you want to delete?");
@@ -196,7 +199,10 @@ public class ListController {
 	}
 	
 	public void update(ActionEvent e) {
+<<<<<<< HEAD
 		
+=======
+>>>>>>> main-saad
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Update");
 		alert.setContentText("Are you sure you want to update?");
@@ -254,6 +260,7 @@ public class ListController {
 		
 	}
 	
+	// returns the ArrayList of songs
 	public SongList getSongList() {
 		return list;
 	}
