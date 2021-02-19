@@ -1,4 +1,12 @@
-<<<<<<< HEAD
-MODUS|Joji|No Album|0
-=======
->>>>>>> main-saad
+Afterthought|Joji|Nectar|2020
+BRB|Bazzi|Cosmic|2018
+Fantasy|Bazzi|Cosmic|2018
+Loaded Gun|6LACK|EALL|2017
+MIDDLECHILD|Jerimiah Cole|Single|2019
+MIDDLECHILD|PNB Rock|Single|2019
+MODUS|Joji|Nectar|2020
+My Mind|Nav|Nav|2017
+Myself|Bazzi|Cosmic|2018
+Myself|Nav|Nav|2017
+Nav|Nav|Nav|2017
+Switch|6LACK|EALL|2017

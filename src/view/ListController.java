@@ -227,6 +227,7 @@ public class ListController {
 				errorEmpty.show();
 			} else {
 				int index = songDisplay.getSelectionModel().getSelectedIndex();
+				// insert alert that if nothing is selected then select something before deleting
 				obsList.remove(index);
 				list.remove(index);
 				if(obsList.isEmpty()) {
