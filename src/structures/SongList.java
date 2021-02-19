@@ -107,5 +107,14 @@ public class SongList {
 			this.names = temp;
 		}
 	}
+	
+	public boolean search(String name, String artist) {
+		for(int i = 0; i < this.list.size(); i++) {
+			if( this.list.get(i).artist.equals( artist ) && this.list.get(i).name.equals( name ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
