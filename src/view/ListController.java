@@ -226,7 +226,6 @@ public class ListController {
 				if(index == -1) {
 					index = 0;
 				}
-				// insert alert that if nothing is selected then select something before deleting
 				obsList.remove(index);
 				list.remove(index);
 				if(obsList.isEmpty()) {
@@ -234,12 +233,22 @@ public class ListController {
 							"Artist: "  + " \n  " +
 							"Album: "  + " \n " +
 							"Year: ");
-				}
-				if(index > obsList.size()-1) {
+				} else if (index > obsList.size()-1 && index >= 1) {
 					index--;
 					songDisplay.getSelectionModel().select(index);
-				}else {
+					Song selectedSong = list.list.get(index);
+                    display.setText("Name: " + selectedSong.name + " \n " +
+                                    "Artist: " + selectedSong.artist + " \n  " +
+                                    "Album: " + selectedSong.album + " \n " +
+                                    "Year: " + selectedSong.year);
+					
+				} else {
 					songDisplay.getSelectionModel().select(index);
+					Song selectedSong = list.list.get(index);
+                    display.setText("Name: " + selectedSong.name + " \n " +
+                                    "Artist: " + selectedSong.artist + " \n  " +
+                                    "Album: " + selectedSong.album + " \n " +
+                                    "Year: " + selectedSong.year);
 				}
 			}
 		}
@@ -268,13 +277,47 @@ public class ListController {
 						int index = songDisplay.getSelectionModel().getSelectedIndex();
 						String songName = updateName.getText().trim();
 						String artistName = updateArtist.getText().trim();
-						String albumName = updateAlbum.getText().trim();
-						list.update(index, songName, artistName, albumName, year, obsList);
-						Song selectedSong = list.list.get(index);
-						display.setText("Name: " + selectedSong.name + " \n " +
-										"Artist: " + selectedSong.artist + " \n  " +
-										"Album: " + selectedSong.album + " \n " +
-										"Year: " + selectedSong.year);
+						if( !songName.equals("") || !artistName.equals("") ) {
+							if(!songName.equals("")) {
+								if( list.search(songName, list.list.get(index).artist) ) {
+									Alert errorDuplicate = new Alert(AlertType.ERROR);
+									errorDuplicate.setTitle("Update Error");
+									errorDuplicate.setContentText("Song and artist already exist. Please update the song using other names");
+									errorDuplicate.showAndWait();
+								} else {
+									String albumName = updateAlbum.getText().trim();
+									list.update(index, songName, artistName, albumName, year, obsList);
+									Song selectedSong = list.list.get(index);
+									display.setText("Name: " + selectedSong.name + " \n " +
+													"Artist: " + selectedSong.artist + " \n  " +
+													"Album: " + selectedSong.album + " \n " +
+													"Year: " + selectedSong.year);
+								}
+							} else {
+								if( list.search(list.list.get(index).name, artistName) ) {
+									Alert errorDuplicate = new Alert(AlertType.ERROR);
+									errorDuplicate.setTitle("Update Error");
+									errorDuplicate.setContentText("Song and artist already exist. Please update the artist using other names");
+									errorDuplicate.showAndWait();
+								} else {
+									String albumName = updateAlbum.getText().trim();
+									list.update(index, songName, artistName, albumName, year, obsList);
+									Song selectedSong = list.list.get(index);
+									display.setText("Name: " + selectedSong.name + " \n " +
+													"Artist: " + selectedSong.artist + " \n  " +
+													"Album: " + selectedSong.album + " \n " +
+													"Year: " + selectedSong.year);
+								}
+							}
+						} else {
+							String albumName = updateAlbum.getText().trim();
+							list.update(index, songName, artistName, albumName, year, obsList);
+							Song selectedSong = list.list.get(index);
+							display.setText("Name: " + selectedSong.name + " \n " +
+											"Artist: " + selectedSong.artist + " \n  " +
+											"Album: " + selectedSong.album + " \n " +
+											"Year: " + selectedSong.year);
+						}
 					}
 				} catch( NumberFormatException n ) {
 					if( updateYear.getText().trim().isEmpty() ) {

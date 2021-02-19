@@ -63,7 +63,7 @@
 		fx:id="Year"
 		AnchorPane.bottomAnchor = "50"
 		AnchorPane.leftAnchor = "10"
-		promptText = "Insert Year (Number Only)"
+		promptText = "Insert Year (Positive Number Only)"
 		prefWidth = "200"
 		/>
 	<TextField 
