@@ -10,7 +10,15 @@ public class Song implements Comparable<Song>{
 		return name;
 	}
 	
-	
+	public String giveArtist() {
+		return artist;
+	}
+	public String giveAlbum() {
+		return album;
+	}
+	public int giveYear() {
+		return year;
+	}
 	// compare function to sort song list my name then artist for song name conflicts
 	@Override
 	public int compareTo(Song o) {

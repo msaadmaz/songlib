@@ -122,7 +122,7 @@ public class ListController {
 	}
 	private void setTextDisplay(Stage mainStage) {
 		int index = songDisplay.getSelectionModel().getSelectedIndex();
-		if( index == -1 && !obsList.isEmpty() ) {
+		if( index == -1 && !obsList.isEmpty()) {
 			index = 0;
 		}
 		if( !list.list.isEmpty() && !obsList.isEmpty() ) {
@@ -227,6 +227,9 @@ public class ListController {
 				errorEmpty.show();
 			} else {
 				int index = songDisplay.getSelectionModel().getSelectedIndex();
+				if(index == -1) {
+					index = 0;
+				}
 				// insert alert that if nothing is selected then select something before deleting
 				obsList.remove(index);
 				list.remove(index);
@@ -265,11 +268,11 @@ public class ListController {
 						String artistName = updateArtist.getText().trim();
 						String albumName = updateAlbum.getText().trim();
 						list.update(index, songName, artistName, albumName, year, obsList);
-						songDisplay.getSelectionModel().select(obsList.indexOf(songName));
-						display.setText("Name: " + songName + " \n " +
-								"Artist: " + artistName + " \n  " +
-								"Album: " + albumName + " \n " +
-								"Year: " + year);
+						Song selectedSong = list.list.get(index);
+						display.setText("Name: " + selectedSong.name + " \n " +
+										"Artist: " + selectedSong.artist + " \n  " +
+										"Album: " + selectedSong.album + " \n " +
+										"Year: " + selectedSong.year);
 					}
 				} catch( NumberFormatException n ) {
 					if( updateYear.getText().trim().isEmpty() ) {
@@ -279,11 +282,11 @@ public class ListController {
 						String artistName = updateArtist.getText().trim();
 						String albumName = updateAlbum.getText().trim();
 						list.update(index, songName, artistName, albumName, year, obsList);
-						songDisplay.getSelectionModel().select(obsList.indexOf(songName));
-						display.setText("Name: " + songName + " \n " +
-								"Artist: " + artistName + " \n  " +
-								"Album: " + albumName + " \n " +
-								"Year: " + year);
+						Song selectedSong = list.list.get(index);
+						display.setText("Name: " + selectedSong.name + " \n " +
+										"Artist: " + selectedSong.artist + " \n  " +
+										"Album: " + selectedSong.album + " \n " +
+										"Year: " + selectedSong.year);
 					} else {
 						Alert errorUpdateYear = new Alert(AlertType.ERROR);
 						errorUpdateYear.setTitle("Update Error");
