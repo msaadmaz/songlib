@@ -10,7 +10,8 @@ There are no spaces between the | character.
 Everything else is taken care of by the code, meaning any insertions to the song list, deletions, and updates will be reflected 
 on the text file even between sessions. 
 A song that is inserted that has no album indicated will have an album named "No Album".
-In addition, the preset year if a year is not inserted is 0
+In addition, the preset year if a year is not inserted is 0.
+Lastly, when exiting the application please use the exit 'x' button on the gui on the top right, as you would a normal window.
 Thanks for reading, and have a great day!
 
 Sincerely,
