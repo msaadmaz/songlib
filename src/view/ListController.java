@@ -144,7 +144,6 @@ public class ListController {
 						Alert yearError = new Alert(AlertType.ERROR);
 						yearError.setContentText("Please enter in a number");
 						yearError.showAndWait();
-						// need to throw an alert here to say that it has to be numbers inserted not strings
 					}
 				}
 				
