@@ -9,7 +9,9 @@ public class Song implements Comparable<Song>{
 	public String toString() {
 		return name;
 	}
-
+	
+	
+	// compare function to sort song list my name then artist for song name conflicts
 	@Override
 	public int compareTo(Song o) {
 		// TODO Auto-generated method stub

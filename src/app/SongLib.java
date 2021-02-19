@@ -29,10 +29,19 @@ public class SongLib extends Application {
 		Scene scene = new Scene(root, 750, 750);
 		primaryStage.setScene(scene);
 		primaryStage.show(); 
+		
+		// lambda expression to rewrite songs text file to keep track of songs between sessions
 		primaryStage.setOnCloseRequest(event -> {
+			// gets the most recent verson of the song list
 			SongList list = ListController.getSongList();
+			
+			//creates new file
 			File songs = new File("songs.txt");
+			
+			// try catch to detect errors incase songs.txt already exists, however it will not since it was already deleted prior
 			try {
+				
+				// creates new file and writes the list into that file
 				songs.createNewFile();
 				FileWriter myWriter = new FileWriter("songs.txt");
 				for(int i = 0; i < list.getSize(); i++) {
