@@ -94,7 +94,18 @@ public class ListController {
 		String songName = Name.getText();
 		String artistName = Artist.getText();
 		String albumName = Album.getText();
-		int year = Integer.parseInt(Year.getText());
+		int year = 0;
+		try {
+			year = Integer.parseInt(Year.getText());
+		} catch( NumberFormatException n ) {
+			if( Year.getText().equals("") ) {
+				year = 0;
+			} else {
+				// need to throw an alert here to say that it has to be numbers inserted not strings
+				System.out.println("Enter in a number");
+			}
+		}
+		
 		obsList = list.add(songName, artistName, albumName, year, obsList);
 	}
 	
@@ -121,7 +132,17 @@ public class ListController {
 		String songName = updateName.getText();
 		String artistName = updateArtist.getText();
 		String albumName = updateAlbum.getText();
-		Integer year = Integer.parseInt(updateYear.getText());
+		Integer year = null;
+		try {
+			year = Integer.parseInt(updateYear.getText());
+		} catch( NumberFormatException n ) {
+			if( updateYear.getText().equals("") ) {
+				year = list.list.get(index).year;
+			} else {
+				// need to throw an alert here to say that it has to be numbers inserted not strings
+				System.out.println("Enter in a number");
+			}
+		}
 		list.update(index, songName, artistName, albumName, year, obsList);
 	}
 	

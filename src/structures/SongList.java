@@ -78,13 +78,10 @@ public class SongList {
 		int counter = 0;
 		if( !name.equals("") ) {
 			this.list.get(index).name = name;
-			this.list.sort(null);
 			counter++;
 		}
 		if( !artist.equals("") ) {
 			this.list.get(index).artist = artist;
-			System.out.println(this.list.get(index).artist);
-			this.list.sort(null);
 			counter++;
 		}
 		if( !album.equals("") ) {
@@ -94,6 +91,7 @@ public class SongList {
 			this.list.get(index).year = Integer.parseInt(year.toString());
 		}
 		if(counter >= 1) {
+			this.list.sort(null);
 			ArrayList<String> temp = new ArrayList<String>();
 			for(int i = 0; i < this.list.size(); i++) {
 				temp.add(this.list.get(i).toString());
