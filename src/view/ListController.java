@@ -1,3 +1,8 @@
+/**
+ * @author Muhammad Mazhar, msm322
+ * @author Kevin Estabillo, kme87
+ **/
+
 package view;
 
 import java.io.File;

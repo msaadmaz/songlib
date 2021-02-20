@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Mazhar, msm322
+ * @author Kevin Estabillo, kme87
+ **/
+
+
 package app;
 
 import javafx.application.Application;
